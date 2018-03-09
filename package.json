@@ -1,0 +1,24 @@
+{
+  "name": "date-input",
+  "version": "1.0.0",
+  "description": "a react component for manual date input",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linchen2chris/date-input.git"
+  },
+  "keywords": [
+    "react",
+    "date",
+    "input"
+  ],
+  "author": "lc1990linux@gmail.com",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/linchen2chris/date-input/issues"
+  },
+  "homepage": "https://github.com/linchen2chris/date-input#readme"
+}
