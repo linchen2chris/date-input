@@ -4,7 +4,9 @@
   "description": "a react component for manual date input",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,13 @@
   },
   "homepage": "https://github.com/linchen2chris/date-input#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.3.15",
+    "@storybook/addon-links": "^3.3.15",
+    "@storybook/react": "^3.3.15"
   }
 }
