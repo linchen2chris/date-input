@@ -1,0 +1,28 @@
+.outline-container {
+  padding: 4px 0;
+}
+.date--input-container {
+  display: inline-block;
+  position: relative;
+}
+
+.date--input {
+  border: none;
+  text-align: center;
+  width: 42px;
+  margin-right: 12px;
+  background-color: transparent;
+
+}
+
+.date--input:focus,
+.date--input:hover {
+  outline: none;
+}
+
+.date--separator {
+  position: absolute;
+  font-size: 14px;
+  top: 2px;
+  right: 5px;
+}

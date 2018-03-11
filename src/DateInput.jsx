@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import "./DateInput.css";
 
 class DateInput extends Component {
   constructor(props) {
@@ -25,29 +26,43 @@ class DateInput extends Component {
     }
   }
 
+  onChange = (label, value) => {
+    this.setState({
+      [label]: value,
+    });
+  };
+
   render() {
     return (
-      <div>
-        <div id="day-container">
+      <div className="outline-container">
+        <div id="day-container" className="date--input-container">
           <input
             id={`${this.props.id}-day`}
+            placeholder="DD"
+            className="date--input"
             value={this.state.day}
+            onChange={e => this.onChange('day', e.target.value)}
           />
-          <span>/</span>
+          <span className="date--separator">/</span>
         </div>
-        <div id="month-container">
+        <div id="month-container" className="date--input-container">
           <input
             id={`${this.props.id}-month`}
+            placeholder="MM"
+            className="date--input"
             value={this.state.month}
+            onChange={e => this.onChange('month', e.target.value)}
           />
-          <span>/</span>
+          <span className="date--separator">/</span>
         </div>
-        <div id="year-container">
+        <div id="year-container" className="date--input-container">
           <input
             id={`${this.props.id}-year`}
+            placeholder="YYYY"
+            className="date--input"
             value={this.state.year}
+            onChange={e => this.onChange('year', e.target.value)}
           />
-          <span>/</span>
         </div>
       </div>
     )
