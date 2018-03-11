@@ -1,2 +1,24 @@
 * date-input
 a react component for date input, totally manual input field
+
+* Have a try ?
+
+#+BEGIN_SRC zsh
+yarn install
+yarn storybook
+#+END_SRC
+
+then feel free to have a try
+
+* Import in your project
+#+BEGIN_SRC zsh
+yarn add date-input
+#+END_SRC
+
+then date-input will appear in your package.json,
+
+#+BEGIN_SRC js
+import DateInput from 'date-input';
+#+END_SRC
+
+import this component in your source code
