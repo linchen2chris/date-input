@@ -2,7 +2,7 @@
 a react component for date input, totally manual input field
 
 * demo gif
-[[file:./src/dateInput.gif][dateInput]]
+[[file:src/dateInput.gif]]
 
 * Have a try ?
 
