@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import DateOps from './DateOps';
 import "./DateInput.css";
 
 class DateInput extends Component {
@@ -26,6 +27,41 @@ class DateInput extends Component {
     }
   }
 
+  correctValue = (dateProp, value) => {
+    switch (dateProp) {
+    case 'day':
+      return value > 31 ? 31 : value;
+    case 'month':
+      return value > 12 ? 12 : value;
+      defaule:
+      return value;
+    }
+  };
+  updateDate = (dateProp, value) => {
+    if (value !== '' && !value.match(/^\d+$/)) {
+      return;
+    }
+
+    const correctedValue = this.correctValue(dateProp, value);
+    const newState = Object.assign({}, this.state, {[dateProp]: correctedValue});
+
+    const dayFocused = this.dayInput === document.activeElement;
+    const monthFocused = this.monthInput === document.activeElement;
+
+    const dayValue = dayFocused ? newState.day : DateOps.padSingleDigit(newState.day);
+    const monthValue = monthFocused ? newState.month : DateOps.padSingleDigit(newState.month);
+    const yearValue = newState.year;
+
+    const dateValue = `${yearValue}-${monthValue}-${dayValue}`;
+
+    this.setState({
+      year: yearValue,
+      month: monthValue,
+      day: dayValue,
+      value: dateValue,
+    });
+  };
+
   handleFocus = (dateProp, value) => {
     if (dateProp === 'year') {
       return;
@@ -42,9 +78,7 @@ class DateInput extends Component {
 
   };
   onChange = (dateProp, value) => {
-    this.setState({
-      [dateProp]: value,
-    });
+    this.updateDate(dateProp, value);
     this.handleFocus(dateProp, value);
   };
 
