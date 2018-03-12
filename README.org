@@ -1,6 +1,9 @@
 * date-input
 a react component for date input, totally manual input field
 
+* demo gif
+[[file:./src/dateInput.gif][dateInput]]
+
 * Have a try ?
 
 #+BEGIN_SRC zsh
