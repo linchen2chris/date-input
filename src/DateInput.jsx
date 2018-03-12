@@ -39,9 +39,12 @@ class DateInput extends Component {
           <input
             id={`${this.props.id}-day`}
             placeholder="DD"
+            type="tel"
+            maxLength="2"
             className="date--input"
             value={this.state.day}
             onChange={e => this.onChange('day', e.target.value)}
+            disabled={this.props.disabled}
           />
           <span className="date--separator">/</span>
         </div>
@@ -49,9 +52,12 @@ class DateInput extends Component {
           <input
             id={`${this.props.id}-month`}
             placeholder="MM"
+            type="tel"
+            maxLength="2"
             className="date--input"
             value={this.state.month}
             onChange={e => this.onChange('month', e.target.value)}
+            disabled={this.props.disabled}
           />
           <span className="date--separator">/</span>
         </div>
@@ -59,9 +65,12 @@ class DateInput extends Component {
           <input
             id={`${this.props.id}-year`}
             placeholder="YYYY"
+            type="tel"
+            maxLength="4"
             className="date--input"
             value={this.state.year}
             onChange={e => this.onChange('year', e.target.value)}
+            disabled={this.props.disabled}
           />
         </div>
       </div>
@@ -74,6 +83,13 @@ DateInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  disabled: PropTypes.bool,
 };
+
+DateInput.defaultProps = {
+  disabled: false,
+  onChange: () => {},
+  onBlur: () => {},
+}
 
 export default DateInput;

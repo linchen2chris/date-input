@@ -1,4 +1,6 @@
 .outline-container {
+  width: fit-content;
+  border: 1px solid gray;
   padding: 4px 0;
 }
 .date--input-container {
