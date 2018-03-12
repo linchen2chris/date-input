@@ -26,10 +26,26 @@ class DateInput extends Component {
     }
   }
 
-  onChange = (label, value) => {
+  handleFocus = (dateProp, value) => {
+    if (dateProp === 'year') {
+      return;
+    }
+
+    const dayFocused = this.dayInput === document.activeElement;
+    const monthFocused = this.monthInput === document.activeElement;
+
+    if (dayFocused && value.length >=2) {
+      this.monthInput.focus();
+    } else if (monthFocused && value.length >= 2) {
+      this.yearInput.focus();
+    }
+
+  };
+  onChange = (dateProp, value) => {
     this.setState({
-      [label]: value,
+      [dateProp]: value,
     });
+    this.handleFocus(dateProp, value);
   };
 
   render() {
@@ -38,6 +54,7 @@ class DateInput extends Component {
         <div id="day-container" className="date--input-container">
           <input
             id={`${this.props.id}-day`}
+            ref={input => this.dayInput = input}
             placeholder="DD"
             type="tel"
             maxLength="2"
@@ -51,6 +68,8 @@ class DateInput extends Component {
         <div id="month-container" className="date--input-container">
           <input
             id={`${this.props.id}-month`}
+            ref={input => this.monthInput = input}
+            placeholder="DD"
             placeholder="MM"
             type="tel"
             maxLength="2"
@@ -64,6 +83,7 @@ class DateInput extends Component {
         <div id="year-container" className="date--input-container">
           <input
             id={`${this.props.id}-year`}
+            ref={input => this.yearInput = input}
             placeholder="YYYY"
             type="tel"
             maxLength="4"
