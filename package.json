@@ -1,6 +1,6 @@
 {
   "name": "date-input",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "a react component for manual date input",
   "main": "index.js",
   "scripts": {
