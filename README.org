@@ -2,8 +2,14 @@
 a react component for date input, totally manual input field
 
 * demo gif
+** type your date
 [[file:src/dateInput.gif]]
 
+** valdate when you blur it
+[[file:src/dateInput-validateOnBlur.gif]]
+
+** validate when you type the full date
+[[file:src/dateInput-validateOnFinish.gif]]
 * Have a try ?
 
 #+BEGIN_SRC zsh

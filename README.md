@@ -1,27 +1,49 @@
 
 # Table of Contents
 
-1.  [date-input](#orgf808469)
-2.  [demo gif](#org211c850)
-3.  [Have a try ?](#org19d169d)
-4.  [Import in your project](#org3851fc7)
+1.  [date-input](#org2c4741f)
+2.  [demo gif](#org89573f3)
+    1.  [type your date](#org25de8aa)
+    2.  [valdate when you blur it](#org3f0e2f1)
+    3.  [validate when you type the full date](#orgb8b71d2)
+3.  [Have a try ?](#org4307676)
+4.  [Import in your project](#org772de85)
 
 
-<a id="orgf808469"></a>
+<a id="org2c4741f"></a>
 
 # date-input
 
 a react component for date input, totally manual input field
 
 
-<a id="org211c850"></a>
+<a id="org89573f3"></a>
 
 # demo gif
+
+
+<a id="org25de8aa"></a>
+
+## type your date
 
 ![img](src/dateInput.gif)
 
 
-<a id="org19d169d"></a>
+<a id="org3f0e2f1"></a>
+
+## valdate when you blur it
+
+![img](src/dateInput-validateOnBlur.gif)
+
+
+<a id="orgb8b71d2"></a>
+
+## validate when you type the full date
+
+![img](src/dateInput-validateOnFinish.gif)
+
+
+<a id="org4307676"></a>
 
 # Have a try ?
 
@@ -31,7 +53,7 @@ a react component for date input, totally manual input field
 then feel free to have a try
 
 
-<a id="org3851fc7"></a>
+<a id="org772de85"></a>
 
 # Import in your project
 
