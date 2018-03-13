@@ -33,10 +33,11 @@ class DateInput extends Component {
       return value > 31 ? 31 : value;
     case 'month':
       return value > 12 ? 12 : value;
-      defaule:
+    default:
       return value;
     }
   };
+
   updateDate = (dateProp, value) => {
     if (value !== '' && !value.match(/^\d+$/)) {
       return;
@@ -95,6 +96,7 @@ class DateInput extends Component {
             className="date--input"
             value={this.state.day}
             onChange={e => this.onChange('day', e.target.value)}
+            onBlur={e => this.updateDate('day', e.target.value)}
             disabled={this.props.disabled}
           />
           <span className="date--separator">/</span>
@@ -110,6 +112,7 @@ class DateInput extends Component {
             className="date--input"
             value={this.state.month}
             onChange={e => this.onChange('month', e.target.value)}
+            onBlur={e => this.updateDate('month', e.target.value)}
             disabled={this.props.disabled}
           />
           <span className="date--separator">/</span>
@@ -124,6 +127,7 @@ class DateInput extends Component {
             className="date--input"
             value={this.state.year}
             onChange={e => this.onChange('year', e.target.value)}
+            onBlur={e => this.updateDate('year', e.target.value)}
             disabled={this.props.disabled}
           />
         </div>
