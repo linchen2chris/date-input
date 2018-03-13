@@ -25,6 +25,7 @@
   "homepage": "https://github.com/linchen2chris/date-input#readme",
   "dependencies": {
     "babel-core": "^6.26.0",
+    "moment": "^2.21.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0"
   },

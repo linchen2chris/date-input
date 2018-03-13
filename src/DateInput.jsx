@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import DateOps from './DateOps';
 import "./DateInput.css";
 
@@ -17,6 +18,7 @@ class DateInput extends Component {
         month: dateArray[1],
         day: dateArray[2],
         value: value,
+        error: false,
       };
     }
     return {
@@ -24,6 +26,7 @@ class DateInput extends Component {
       month: '',
       day: '',
       value: '',
+      error: false,
     }
   }
 
@@ -61,6 +64,11 @@ class DateInput extends Component {
       day: dayValue,
       value: dateValue,
     });
+
+    this.props.onChange(dateValue)
+    if(dateValue.length === 10) {
+      this.validate(dateValue);
+    }
   };
 
   handleFocus = (dateProp, value) => {
@@ -83,9 +91,38 @@ class DateInput extends Component {
     this.handleFocus(dateProp, value);
   };
 
+  validate = (dateValue) => {
+    if(moment(dateValue, 'YYYY-MM-DD', true).isValid()) {
+      this.setState({error: false});
+    } else {
+      this.setState({error: true});
+    }
+  }
+  onBlur = (e) => {
+    const currentTarget = e.currentTarget;
+
+    const dayValue = DateOps.padSingleDigit(this.state.day);
+    const monthValue = DateOps.padSingleDigit(this.state.month);
+    const yearValue = this.state.year;
+
+    const currentValue = `${yearValue}-${monthValue}-${dayValue}`;
+
+    setTimeout(() => {
+      if(!currentTarget.contains(document.activeElement)) {
+        this.validate(currentValue);
+        if(this.state.value !== currentValue) {
+          this.props.onChange(currentValue);
+        }
+        if(this.props.onBlur) {
+          this.props.onBlur(currentValue);
+        }
+      }
+    });
+  }
   render() {
     return (
-      <div className="outline-container">
+      <div>
+      <div className={ `${this.state.error ? 'is-invalid' : ''} outline-container` } onBlur={e => this.onBlur(e)}>
         <div id="day-container" className="date--input-container">
           <input
             id={`${this.props.id}-day`}
@@ -131,6 +168,8 @@ class DateInput extends Component {
             disabled={this.props.disabled}
           />
         </div>
+      </div>
+      {this.state.error && <p className="is-invalid">please input a valid date</p>}
       </div>
     )
   }

@@ -1,8 +1,17 @@
+.is-invalid {
+  color: red;
+}
+
 .outline-container {
   width: fit-content;
   border: 1px solid gray;
   padding: 4px 0;
 }
+
+.is-invalid.outline-container {
+  border: 1px solid red;
+}
+
 .date--input-container {
   display: inline-block;
   position: relative;
@@ -27,4 +36,9 @@
   font-size: 14px;
   top: 2px;
   right: 5px;
+}
+
+p.is-invalid {
+  margin-top: 5px;
+  font-size: 12px;
 }
