@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DateOps from './DateOps';
-import "./DateInput.css";
+import '../style/DateInput.css';
 
 class DateInput extends Component {
   constructor(props) {

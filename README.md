@@ -26,21 +26,21 @@ a react component for date input, totally manual input field
 
 ## type your date
 
-![img](src/dateInput.gif)
+![img](doc/dateInput.gif)
 
 
 <a id="org3f0e2f1"></a>
 
 ## valdate when you blur it
 
-![img](src/dateInput-validateOnBlur.gif)
+![img](doc/dateInput-validateOnBlur.gif)
 
 
 <a id="orgb8b71d2"></a>
 
 ## validate when you type the full date
 
-![img](src/dateInput-validateOnFinish.gif)
+![img](doc/dateInput-validateOnFinish.gif)
 
 
 <a id="org4307676"></a>
