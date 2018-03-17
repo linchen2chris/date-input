@@ -1,3 +1,2 @@
-import DateInput from './src/DateInput.jsx';
-
-export default DateInput;
+require('babel-polyfill');
+module.exports = require('./lib/DateInput').default;

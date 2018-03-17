@@ -27,11 +27,11 @@ class DateInput extends Component {
       day: '',
       value: '',
       error: false,
-    }
+    };
   }
 
-  correctValue = (dateProp, value) => {
-    switch (dateProp) {
+  correctValue(dateProp, value) {
+    switch(dateProp) {
     case 'day':
       return value > 31 ? 31 : value;
     case 'month':
@@ -41,7 +41,7 @@ class DateInput extends Component {
     }
   };
 
-  updateDate = (dateProp, value) => {
+  updateDate (dateProp, value) {
     if (value !== '' && !value.match(/^\d+$/)) {
       return;
     }
@@ -71,7 +71,7 @@ class DateInput extends Component {
     }
   };
 
-  handleFocus = (dateProp, value) => {
+ handleFocus(dateProp, value) {
     if (dateProp === 'year') {
       return;
     }
@@ -86,19 +86,19 @@ class DateInput extends Component {
     }
 
   };
-  onChange = (dateProp, value) => {
+  onChange(dateProp, value) {
     this.updateDate(dateProp, value);
     this.handleFocus(dateProp, value);
   };
 
-  validate = (dateValue) => {
+  validate(dateValue) {
     if(moment(dateValue, 'YYYY-MM-DD', true).isValid()) {
       this.setState({error: false});
     } else {
       this.setState({error: true});
     }
-  }
-  onBlur = (e) => {
+  };
+  onBlur(e) {
     const currentTarget = e.currentTarget;
 
     const dayValue = DateOps.padSingleDigit(this.state.day);
@@ -118,7 +118,7 @@ class DateInput extends Component {
         }
       }
     });
-  }
+  };
   render() {
     return (
       <div>
@@ -142,7 +142,6 @@ class DateInput extends Component {
           <input
             id={`${this.props.id}-month`}
             ref={input => this.monthInput = input}
-            placeholder="DD"
             placeholder="MM"
             type="tel"
             maxLength="2"
@@ -187,6 +186,6 @@ DateInput.defaultProps = {
   disabled: false,
   onChange: () => {},
   onBlur: () => {},
-}
+};
 
 export default DateInput;

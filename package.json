@@ -4,6 +4,8 @@
   "description": "a react component for manual date input",
   "main": "index.js",
   "scripts": {
+    "compile": "babel src -d lib",
+    "prepublish": "npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -24,10 +26,21 @@
   },
   "homepage": "https://github.com/linchen2chris/date-input#readme",
   "dependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.11",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0"
+    "react": "^16.2.0",
+    "style-loader": "^0.20.3",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",
