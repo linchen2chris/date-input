@@ -3,13 +3,13 @@ a react component for date input, totally manual input field
 
 * demo gif
 ** type your date
-[[file:src/dateInput.gif]]
+[[file:doc/dateInput.gif]]
 
 ** valdate when you blur it
-[[file:src/dateInput-validateOnBlur.gif]]
+[[file:doc/dateInput-validateOnBlur.gif]]
 
 ** validate when you type the full date
-[[file:src/dateInput-validateOnFinish.gif]]
+[[file:doc/dateInput-validateOnFinish.gif]]
 * Have a try ?
 
 #+BEGIN_SRC zsh
@@ -31,3 +31,11 @@ import DateInput from 'date-input';
 #+END_SRC
 
 import this component in your source code
+
+* Roadmap
+  + [] add props minDate and maxDate which can be exactly date or relative date.
+  + [] add more validate Rules for user to choose, like [isFutureDate, isPastDate]
+  + [] allow user to pass into customized validate rules, error messages
+  + [] support date format like MM/YYYY, which is useful like expire date of credit card
+  + [] support customized style
+
