@@ -1,6 +1,14 @@
 * date-input
 a react component for date input, totally manual input field
 
+available props
+
+| Props    | description            | option? | comment                                                  |
+| value    | the initial date Value | yes     | format "YYYY-MM-DD"                                      |
+| onChange | callback function      | yes     | call when you type in any field                          |
+| onBlur   | callback function      | yes     | call when you blur the whole DateInput                   |
+| minDate  | the min date           | yes     | if the date you fill in is before minDate will get error |
+| maxDate  | the max date           | yes     | if the date you fill in is after maxDate will get error  |
 * demo gif
 ** type your date
 [[file:doc/dateInput.gif]]
@@ -33,7 +41,7 @@ import DateInput from 'date-input';
 import this component in your source code
 
 * Roadmap
-  + [] add props minDate and maxDate which can be exactly date or relative date.
+  + [X] add props minDate and maxDate which can be exactly date or relative date.
   + [] add more validate Rules for user to choose, like [isFutureDate, isPastDate]
   + [] allow user to pass into customized validate rules, error messages
   + [] support date format like MM/YYYY, which is useful like expire date of credit card
