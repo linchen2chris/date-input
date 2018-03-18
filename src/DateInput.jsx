@@ -71,7 +71,7 @@ class DateInput extends Component {
     }
   };
 
- handleFocus(dateProp, value) {
+  handleFocus(dateProp, value) {
     if (dateProp === 'year') {
       return;
     }
@@ -95,7 +95,16 @@ class DateInput extends Component {
     if(moment(dateValue, 'YYYY-MM-DD', true).isValid()) {
       this.setState({error: false});
     } else {
-      this.setState({error: true});
+      this.setState({error: true, errorMessage: 'please input a valid date'});
+      return;
+    }
+    if(this.props.minDate && moment(dateValue).isBefore(this.props.minDate)) {
+      this.setState({error: true, errorMessage: `the date can not before ${this.props.minDate}`});
+      return;
+    }
+    if(this.props.maxDate && moment(dateValue).isAfter(this.props.maxDate)) {
+      this.setState({error: true, errorMessage: `the date can not after ${this.props.maxDate}`});
+      return;
     }
   };
   onBlur(e) {
@@ -168,7 +177,7 @@ class DateInput extends Component {
           />
         </div>
       </div>
-      {this.state.error && <p className="is-invalid">please input a valid date</p>}
+      {this.state.error && <p className="is-invalid">{this.state.errorMessage}</p>}
       </div>
     )
   }
@@ -179,11 +188,15 @@ DateInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
+  minDate: PropTypes.string,
+  maxDate: PropTypes.string,
   disabled: PropTypes.bool,
 };
 
 DateInput.defaultProps = {
   disabled: false,
+  minDate: null,
+  maxDate: null,
   onChange: () => {},
   onBlur: () => {},
 };
