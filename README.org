@@ -3,12 +3,13 @@ a react component for date input, totally manual input field
 
 available props
 
-| Props    | description            | option? | comment                                                  |
-| value    | the initial date Value | yes     | format "YYYY-MM-DD"                                      |
-| onChange | callback function      | yes     | call when you type in any field                          |
-| onBlur   | callback function      | yes     | call when you blur the whole DateInput                   |
-| minDate  | the min date           | yes     | if the date you fill in is before minDate will get error |
-| maxDate  | the max date           | yes     | if the date you fill in is after maxDate will get error  |
+| Props    | description            | option? | comment                                                                       |
+| value    | the initial date Value | yes     | format "YYYY-MM-DD"                                                           |
+| onChange | callback function      | yes     | call when you type in any field                                               |
+| onBlur   | callback function      | yes     | call when you blur the whole DateInput                                        |
+| minDate  | the min date           | yes     | if the date you fill in is before minDate will get error, format "YYYY-MM-DD" |
+| maxDate  | the max date           | yes     | if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"  |
+
 * demo gif
 ** type your date
 [[file:doc/dateInput.gif]]

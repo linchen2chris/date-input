@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import DateOps from './DateOps';
+import validator from './validator.js';
 import '../style/DateInput.css';
 
 class DateInput extends Component {
@@ -92,19 +93,29 @@ class DateInput extends Component {
   };
 
   validate(dateValue) {
-    if(moment(dateValue, 'YYYY-MM-DD', true).isValid()) {
-      this.setState({error: false});
+    let defaultRules = [
+      {
+        checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
+        errorMessage: this.props.invalidError || 'please input a valid date',
+      }
+    ];
+    if (this.props.minDate) {
+      defaultRules.push({
+        checker: (value, option) => moment(dateValue).isSameOrAfter(option.minDate),
+        errorMessage: this.props.minDateError || 'The date is too early',
+      });
+    }
+    if (this.props.maxDate) {
+      defaultRules.push({
+        checker: (value, option) => moment(dateValue).isSameOrBefore(option.maxDate),
+        errorMessage: this.props.maxDateError || 'The date is too late',
+      });
+    }
+    const errorMsg = validator(defaultRules, dateValue, {minDate: this.props.minDate, maxDate: this.props.maxDate});
+    if (errorMsg) {
+      this.setState({error: true, errorMessage: errorMsg});
     } else {
-      this.setState({error: true, errorMessage: 'please input a valid date'});
-      return;
-    }
-    if(this.props.minDate && moment(dateValue).isBefore(this.props.minDate)) {
-      this.setState({error: true, errorMessage: `the date can not before ${this.props.minDate}`});
-      return;
-    }
-    if(this.props.maxDate && moment(dateValue).isAfter(this.props.maxDate)) {
-      this.setState({error: true, errorMessage: `the date can not after ${this.props.maxDate}`});
-      return;
+      this.setState({error: false});
     }
   };
   onBlur(e) {
@@ -189,7 +200,10 @@ DateInput.propTypes = {
   onChange: PropTypes.func,
   onBlur: PropTypes.func,
   minDate: PropTypes.string,
+  minDateError: PropTypes.string,
   maxDate: PropTypes.string,
+  maxDateError: PropTypes.string,
+  invalidError: PropTypes.string,
   disabled: PropTypes.bool,
 };
 
@@ -197,6 +211,9 @@ DateInput.defaultProps = {
   disabled: false,
   minDate: null,
   maxDate: null,
+  minDateError: null,
+  maxDateError: null,
+  invalidError: null,
   onChange: () => {},
   onBlur: () => {},
 };
