@@ -1,17 +1,17 @@
 
 # Table of Contents
 
-1.  [date-input](#orgc54d88a)
-2.  [demo gif](#org982c642)
-    1.  [type your date](#org779ce44)
-    2.  [valdate when you blur it](#org98999d5)
-    3.  [validate when you type the full date](#org1f4f321)
-3.  [Have a try ?](#org128f636)
-4.  [Import in your project](#org23be83c)
-5.  [Roadmap](#org4ff9d13)
+1.  [date-input](#org485e673)
+2.  [demo gif](#org82697c8)
+    1.  [type your date](#org6400a48)
+    2.  [valdate when you blur it](#orgfdca4de)
+    3.  [validate when you type the full date](#orgba82c2e)
+3.  [Have a try ?](#org85e35aa)
+4.  [Import in your project](#org86516a5)
+5.  [Roadmap](#orgce66d20)
 
 
-<a id="orgc54d88a"></a>
+<a id="org485e673"></a>
 
 # date-input
 
@@ -68,7 +68,15 @@ available props
 <td class="org-left">minDate</td>
 <td class="org-left">the min date</td>
 <td class="org-left">yes</td>
-<td class="org-left">if the date you fill in is before minDate will get error</td>
+<td class="org-left">if the date you fill in is before minDate will get error, format "YYYY-MM-DD"</td>
+</tr>
+
+
+<tr>
+<td class="org-left">minDateError</td>
+<td class="org-left">customized errorMessage</td>
+<td class="org-left">yes</td>
+<td class="org-left">default errorMessage is "The date is too early"</td>
 </tr>
 
 
@@ -76,39 +84,76 @@ available props
 <td class="org-left">maxDate</td>
 <td class="org-left">the max date</td>
 <td class="org-left">yes</td>
-<td class="org-left">if the date you fill in is after maxDate will get error</td>
+<td class="org-left">if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"</td>
+</tr>
+
+
+<tr>
+<td class="org-left">maxDateError</td>
+<td class="org-left">customized errorMessage</td>
+<td class="org-left">yes</td>
+<td class="org-left">default errorMessage is "The date is too late"</td>
+</tr>
+
+
+<tr>
+<td class="org-left">invalidError</td>
+<td class="org-left">customized errorMessage</td>
+<td class="org-left">yes</td>
+<td class="org-left">default errorMessage is "please input a valid date"</td>
 </tr>
 </tbody>
 </table>
 
+currently, we have default validate rules
 
-<a id="org982c642"></a>
+    let defaultRules = [
+      {
+        checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
+        errorMessage: this.props.invalidError || 'please input a valid date',
+      },
+      //only when you pass minDate
+      {
+        checker: (value, option) => moment(dateValue).isSameOrAfter(option.minDate),
+        errorMessage: this.props.minDateError || 'The date is too early',
+      },
+      //only validate when you pass maxDate
+      {
+        checker: (value, option) => moment(dateValue).isSameOrBefore(option.maxDate),
+        errorMessage: this.props.maxDateError || 'The date is too late',
+      },
+    ];
+
+later, you will be allowed to pass customized rules, just following the format above.
+
+
+<a id="org82697c8"></a>
 
 # demo gif
 
 
-<a id="org779ce44"></a>
+<a id="org6400a48"></a>
 
 ## type your date
 
 ![img](doc/dateInput.gif)
 
 
-<a id="org98999d5"></a>
+<a id="orgfdca4de"></a>
 
 ## valdate when you blur it
 
 ![img](doc/dateInput-validateOnBlur.gif)
 
 
-<a id="org1f4f321"></a>
+<a id="orgba82c2e"></a>
 
 ## validate when you type the full date
 
 ![img](doc/dateInput-validateOnFinish.gif)
 
 
-<a id="org128f636"></a>
+<a id="org85e35aa"></a>
 
 # Have a try ?
 
@@ -118,7 +163,7 @@ available props
 then feel free to have a try
 
 
-<a id="org23be83c"></a>
+<a id="org86516a5"></a>
 
 # Import in your project
 
@@ -131,7 +176,7 @@ then date-input will appear in your package.json,
 import this component in your source code
 
 
-<a id="org4ff9d13"></a>
+<a id="orgce66d20"></a>
 
 # Roadmap
 

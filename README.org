@@ -3,13 +3,37 @@ a react component for date input, totally manual input field
 
 available props
 
-| Props    | description            | option? | comment                                                                       |
-| value    | the initial date Value | yes     | format "YYYY-MM-DD"                                                           |
-| onChange | callback function      | yes     | call when you type in any field                                               |
-| onBlur   | callback function      | yes     | call when you blur the whole DateInput                                        |
-| minDate  | the min date           | yes     | if the date you fill in is before minDate will get error, format "YYYY-MM-DD" |
-| maxDate  | the max date           | yes     | if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"  |
+| Props        | description             | option? | comment                                                                       |
+| value        | the initial date Value  | yes     | format "YYYY-MM-DD"                                                           |
+| onChange     | callback function       | yes     | call when you type in any field                                               |
+| onBlur       | callback function       | yes     | call when you blur the whole DateInput                                        |
+| minDate      | the min date            | yes     | if the date you fill in is before minDate will get error, format "YYYY-MM-DD" |
+| minDateError | customized errorMessage | yes     | default errorMessage is "The date is too early"                               |
+| maxDate      | the max date            | yes     | if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"  |
+| maxDateError | customized errorMessage | yes     | default errorMessage is "The date is too late"                                |
+| invalidError | customized errorMessage | yes     | default errorMessage is "please input a valid date"                           |
 
+currently, we have default validate rules
+#+BEGIN_SRC js
+    let defaultRules = [
+      {
+        checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
+        errorMessage: this.props.invalidError || 'please input a valid date',
+      },
+      //only when you pass minDate
+      {
+        checker: (value, option) => moment(dateValue).isSameOrAfter(option.minDate),
+        errorMessage: this.props.minDateError || 'The date is too early',
+      },
+      //only validate when you pass maxDate
+      {
+        checker: (value, option) => moment(dateValue).isSameOrBefore(option.maxDate),
+        errorMessage: this.props.maxDateError || 'The date is too late',
+      },
+    ];
+#+END_SRC
+
+later, you will be allowed to pass customized rules, just following the format above.
 * demo gif
 ** type your date
 [[file:doc/dateInput.gif]]
