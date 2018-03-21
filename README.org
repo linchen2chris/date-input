@@ -3,15 +3,16 @@ a react component for date input, totally manual input field
 
 available props
 
-| Props        | description             | option? | comment                                                                       |
-| value        | the initial date Value  | yes     | format "YYYY-MM-DD"                                                           |
-| onChange     | callback function       | yes     | call when you type in any field                                               |
-| onBlur       | callback function       | yes     | call when you blur the whole DateInput                                        |
-| minDate      | the min date            | yes     | if the date you fill in is before minDate will get error, format "YYYY-MM-DD" |
-| minDateError | customized errorMessage | yes     | default errorMessage is "The date is too early"                               |
-| maxDate      | the max date            | yes     | if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"  |
-| maxDateError | customized errorMessage | yes     | default errorMessage is "The date is too late"                                |
-| invalidError | customized errorMessage | yes     | default errorMessage is "please input a valid date"                           |
+| Props        | description               | option? | comment                                                                           |
+| value        | the initial date Value    | yes     | format "YYYY-MM-DD"                                                               |
+| onChange     | callback function         | yes     | call when you type in any field                                                   |
+| onBlur       | callback function         | yes     | call when you blur the whole DateInput                                            |
+| minDate      | the min date              | yes     | if the date you fill in is before minDate will get error, format "YYYY-MM-DD"     |
+| minDateError | customized errorMessage   | yes     | default errorMessage is "The date is too early"                                   |
+| maxDate      | the max date              | yes     | if the date you fill in is after maxDate will get error, format "YYYY-MM-DD"      |
+| maxDateError | customized errorMessage   | yes     | default errorMessage is "The date is too late"                                    |
+| invalidError | customized errorMessage   | yes     | default errorMessage is "please input a valid date"                               |
+| rules        | customized validate rules | yes     | the format should follow [{checker: value => fun(val), errorMessage: 'a string'}] |
 
 currently, we have default validate rules
 #+BEGIN_SRC js
@@ -33,7 +34,25 @@ currently, we have default validate rules
     ];
 #+END_SRC
 
-later, you will be allowed to pass customized rules, just following the format above.
+Also, you are allowed to pass customized rules, just following the format above.
+
+* Examples
+** customize invalidError
+   #+BEGIN_SRC html
+   <DateInput invalidError="it is invalid date" />
+   #+END_SRC
+** add minDate validate and customized its errorMessage
+   #+BEGIN_SRC html
+   <DateInput minDate="1990-01-01" minDateError="should before 1990-01-01" />
+   #+END_SRC
+** add maxDate validate and customized its errorMessage
+   #+BEGIN_SRC html
+   <DateInput maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
+   #+END_SRC
+** customize the whole validate rules, p.s. the default rules will lost 
+   #+BEGIN_SRC html
+   <DateInput rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
+   #+END_SRC
 * demo gif
 ** type your date
 [[file:doc/dateInput.gif]]

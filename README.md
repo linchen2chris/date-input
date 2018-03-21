@@ -1,17 +1,22 @@
 
 # Table of Contents
 
-1.  [date-input](#org485e673)
-2.  [demo gif](#org82697c8)
-    1.  [type your date](#org6400a48)
-    2.  [valdate when you blur it](#orgfdca4de)
-    3.  [validate when you type the full date](#orgba82c2e)
-3.  [Have a try ?](#org85e35aa)
-4.  [Import in your project](#org86516a5)
-5.  [Roadmap](#orgce66d20)
+1.  [date-input](#orgb72a58e)
+2.  [Examples](#orgcaea027)
+    1.  [customize invalidError](#orgac6100a)
+    2.  [add minDate validate and customized its errorMessage](#orgc3d798e)
+    3.  [add maxDate validate and customized its errorMessage](#orgeca5c60)
+    4.  [customize the whole validate rules, p.s. the default rules will lost](#org03c0a4d)
+3.  [demo gif](#org0847101)
+    1.  [type your date](#orgd4f3cb9)
+    2.  [valdate when you blur it](#orgf7e3e45)
+    3.  [validate when you type the full date](#org258fced)
+4.  [Have a try ?](#org8be68eb)
+5.  [Import in your project](#orgad53733)
+6.  [Roadmap](#org472537d)
 
 
-<a id="org485e673"></a>
+<a id="orgb72a58e"></a>
 
 # date-input
 
@@ -102,6 +107,14 @@ available props
 <td class="org-left">yes</td>
 <td class="org-left">default errorMessage is "please input a valid date"</td>
 </tr>
+
+
+<tr>
+<td class="org-left">rules</td>
+<td class="org-left">customized validate rules</td>
+<td class="org-left">yes</td>
+<td class="org-left">the format should follow [{checker: value => fun(val), errorMessage: 'a string'}]</td>
+</tr>
 </tbody>
 </table>
 
@@ -124,36 +137,69 @@ currently, we have default validate rules
       },
     ];
 
-later, you will be allowed to pass customized rules, just following the format above.
+Also, you are allowed to pass customized rules, just following the format above.
 
 
-<a id="org82697c8"></a>
+<a id="orgcaea027"></a>
+
+# Examples
+
+
+<a id="orgac6100a"></a>
+
+## customize invalidError
+
+    <DateInput invalidError="it is invalid date" />
+
+
+<a id="orgc3d798e"></a>
+
+## add minDate validate and customized its errorMessage
+
+    <DateInput minDate="1990-01-01" minDateError="should before 1990-01-01" />
+
+
+<a id="orgeca5c60"></a>
+
+## add maxDate validate and customized its errorMessage
+
+    <DateInput maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
+
+
+<a id="org03c0a4d"></a>
+
+## customize the whole validate rules, p.s. the default rules will lost
+
+    <DateInput rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
+
+
+<a id="org0847101"></a>
 
 # demo gif
 
 
-<a id="org6400a48"></a>
+<a id="orgd4f3cb9"></a>
 
 ## type your date
 
 ![img](doc/dateInput.gif)
 
 
-<a id="orgfdca4de"></a>
+<a id="orgf7e3e45"></a>
 
 ## valdate when you blur it
 
 ![img](doc/dateInput-validateOnBlur.gif)
 
 
-<a id="orgba82c2e"></a>
+<a id="org258fced"></a>
 
 ## validate when you type the full date
 
 ![img](doc/dateInput-validateOnFinish.gif)
 
 
-<a id="org85e35aa"></a>
+<a id="org8be68eb"></a>
 
 # Have a try ?
 
@@ -163,7 +209,7 @@ later, you will be allowed to pass customized rules, just following the format a
 then feel free to have a try
 
 
-<a id="org86516a5"></a>
+<a id="orgad53733"></a>
 
 # Import in your project
 
@@ -176,7 +222,7 @@ then date-input will appear in your package.json,
 import this component in your source code
 
 
-<a id="orgce66d20"></a>
+<a id="org472537d"></a>
 
 # Roadmap
 

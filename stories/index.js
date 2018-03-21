@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
@@ -19,4 +20,8 @@ storiesOf('DateInput', module)
        minDate="1990-01-01"
        maxDate="2020-01-01"
        maxDateError="your date should not after 2020-01-01"
-       />);
+       />)
+  .add('with customized rules', () =>
+       <DateInput
+       rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]}
+       />)
