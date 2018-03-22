@@ -120,22 +120,22 @@ available props
 
 currently, we have default validate rules
 ```javascript
-    let defaultRules = [
-      {
-        checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
-        errorMessage: this.props.invalidError || 'please input a valid date',
-      },
-      //only when you pass minDate
-      {
-        checker: (value, option) => moment(dateValue).isSameOrAfter(option.minDate),
-        errorMessage: this.props.minDateError || 'The date is too early',
-      },
-      //only validate when you pass maxDate
-      {
-        checker: (value, option) => moment(dateValue).isSameOrBefore(option.maxDate),
-        errorMessage: this.props.maxDateError || 'The date is too late',
-      },
-    ];
+let defaultRules = [
+  {
+    checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
+    errorMessage: this.props.invalidError || 'please input a valid date',
+  },
+  //only when you pass minDate
+  {
+    checker: (value, option) => moment(dateValue).isSameOrAfter(option.minDate),
+    errorMessage: this.props.minDateError || 'The date is too early',
+  },
+  //only validate when you pass maxDate
+  {
+    checker: (value, option) => moment(dateValue).isSameOrBefore(option.maxDate),
+    errorMessage: this.props.maxDateError || 'The date is too late',
+  },
+];
 ```
 Also, you are allowed to pass customized rules, just following the format above.
 
@@ -149,28 +149,31 @@ Also, you are allowed to pass customized rules, just following the format above.
 
 ## customize invalidError
 ```html
-    <DateInput invalidError="it is invalid date" />
+<DateInput invalidError="it is invalid date" />
 ```
 
 <a id="orgc3d798e"></a>
 
 ## add minDate validate and customized its errorMessage
-
-    <DateInput minDate="1990-01-01" minDateError="should before 1990-01-01" />
+```html
+<DateInput minDate="1990-01-01" minDateError="should before 1990-01-01" />
+```
 
 
 <a id="orgeca5c60"></a>
 
 ## add maxDate validate and customized its errorMessage
-
-    <DateInput maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
+```html
+<DateInput maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
+```
 
 
 <a id="org03c0a4d"></a>
 
 ## customize the whole validate rules, p.s. the default rules will lost
-
-    <DateInput rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
+```html
+<DateInput rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
+```
 
 
 <a id="org0847101"></a>
@@ -203,9 +206,10 @@ Also, you are allowed to pass customized rules, just following the format above.
 
 # Have a try ?
 
-    yarn install
-    yarn storybook
-
+```shell
+yarn install
+yarn storybook
+```
 then feel free to have a try
 
 
@@ -213,11 +217,14 @@ then feel free to have a try
 
 # Import in your project
 
-    yarn add date-input
-
+```shell
+yarn add date-input
+```
 then date-input will appear in your package.json,
 
-    import DateInput from 'date-input';
+```js
+import DateInput from 'date-input';
+```
 
 import this component in your source code
 
@@ -227,8 +234,8 @@ import this component in your source code
 # Roadmap
 
 -   [X] add props minDate and maxDate which can be exactly date or relative date.
--   [] add more validate Rules for user to choose, like [isFutureDate, isPastDate]
--   [] allow user to pass into customized validate rules, error messages
+-   [X] add more validate Rules for user to choose, like [isFutureDate, isPastDate]
+-   [X] allow user to pass into customized validate rules, error messages
 -   [] support date format like MM/YYYY, which is useful like expire date of credit card
 -   [] support customized style
 
