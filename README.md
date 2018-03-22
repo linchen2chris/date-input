@@ -119,7 +119,7 @@ available props
 </table>
 
 currently, we have default validate rules
-
+```javascript
     let defaultRules = [
       {
         checker: value => moment(dateValue, 'YYYY-MM-DD', true).isValid(),
@@ -136,7 +136,7 @@ currently, we have default validate rules
         errorMessage: this.props.maxDateError || 'The date is too late',
       },
     ];
-
+```
 Also, you are allowed to pass customized rules, just following the format above.
 
 
@@ -148,9 +148,9 @@ Also, you are allowed to pass customized rules, just following the format above.
 <a id="orgac6100a"></a>
 
 ## customize invalidError
-
+```html
     <DateInput invalidError="it is invalid date" />
-
+```
 
 <a id="orgc3d798e"></a>
 
