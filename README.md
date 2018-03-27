@@ -155,14 +155,14 @@ Also, you are allowed to pass customized rules, just following the format above.
 
 ## customize invalidError
 ```html
-<DateInput invalidError="it is invalid date" />
+<DateInput shouldValidate invalidError="it is invalid date" />
 ```
 
 <a id="orgc3d798e"></a>
 
 ## add minDate validate and customized its errorMessage
 ```html
-<DateInput minDate="1990-01-01" minDateError="should before 1990-01-01" />
+<DateInput shouldValidate minDate="1990-01-01" minDateError="should before 1990-01-01" />
 ```
 
 
@@ -170,7 +170,7 @@ Also, you are allowed to pass customized rules, just following the format above.
 
 ## add maxDate validate and customized its errorMessage
 ```html
-<DateInput maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
+<DateInput shouldValidate maxDate={moment().format('YYYY-MM-DD')} maxDateError="your birthday should be a past date" />
 ```
 
 
@@ -178,7 +178,7 @@ Also, you are allowed to pass customized rules, just following the format above.
 
 ## customize the whole validate rules, p.s. the default rules will lost
 ```html
-<DateInput rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
+<DateInput shouldValidate rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]} />
 ```
 
 
