@@ -17,11 +17,13 @@ storiesOf('DateInput', module)
   .add('without value', () => <DateInput/>)
   .add('with minDate and maxDate', () =>
        <DateInput
+       shouldValidate
        minDate="1990-01-01"
        maxDate="2020-01-01"
        maxDateError="your date should not after 2020-01-01"
        />)
   .add('with customized rules', () =>
        <DateInput
+       shouldValidate
        rules={[{checker: value => moment().isBefore(value), errorMessage: 'the date should be the future date'}]}
        />)

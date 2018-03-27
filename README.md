@@ -40,10 +40,16 @@ available props
 <tr>
 <td class="org-left">Props</td>
 <td class="org-left">description</td>
-<td class="org-left">option?</td>
+<td class="org-left">optional?</td>
 <td class="org-left">comment</td>
 </tr>
 
+<tr>
+<td class="org-left">shouldValidate</td>
+<td class="org-left">toggle whether validate the date</td>
+<td class="org-left">yes</td>
+<td class="org-left">default false, set it true when you need validate your date</td>
+</tr>
 
 <tr>
 <td class="org-left">value</td>

@@ -66,7 +66,7 @@ class DateInput extends Component {
     });
 
     this.props.onChange(dateValue)
-    if(dateValue.length === 10) {
+    if(dateValue.length === 10 && this.props.shouldValidate ) {
       this.validate(dateValue);
     }
   };
@@ -111,7 +111,9 @@ class DateInput extends Component {
 
     setTimeout(() => {
       if(!currentTarget.contains(document.activeElement)) {
-        this.validate(currentValue);
+        if(this.props.shouldValidate) {
+          this.validate(currentValue);
+        }
         if(this.state.value !== currentValue) {
           this.props.onChange(currentValue);
         }
@@ -187,6 +189,7 @@ DateInput.propTypes = {
   maxDateError: PropTypes.string,
   invalidError: PropTypes.string,
   disabled: PropTypes.bool,
+  shouldValidate: PropTypes.bool,
   rules: PropTypes.array,
 };
 
@@ -198,6 +201,7 @@ DateInput.defaultProps = {
   maxDateError: null,
   invalidError: null,
   rules: null,
+  shouldValidate: false,
   onChange: () => {},
   onBlur: () => {},
 };
