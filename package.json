@@ -33,11 +33,11 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "css-loader": "^5.0.0",
+    "css-loader": "^6.0.0",
     "moment": "^2.21.0",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "style-loader": "^0.20.3"
+    "style-loader": "^3.0.0"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.3.15",
