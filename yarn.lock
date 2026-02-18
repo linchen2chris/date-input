@@ -1218,6 +1218,11 @@
     prop-types "^15.6.1"
     react-lifecycles-compat "^3.0.4"
 
+"@snyk/protect@^1.1293.1":
+  version "1.1293.1"
+  resolved "https://registry.yarnpkg.com/@snyk/protect/-/protect-1.1293.1.tgz#2fb02c26732a8500d3400379524fe708e660c0ad"
+  integrity sha512-PT2lleyaQU+AvWmnPJ3yKWNyj7JnPUZvOrVTRfXpmmPfjx+U2k3jzsk8EDj0BJd9+goTsTyeQVGCPPSqE5MQtQ==
+
 "@storybook/addon-actions@^3.3.15":
   version "3.3.15"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-3.3.15.tgz#2831e52947dc258208dd17804b479f7acc62d859"

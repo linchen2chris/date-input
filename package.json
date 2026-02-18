@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "compile": "babel src -d lib",
-    "prepublish": "npm run compile",
+    "prepublish": "yarn run snyk-protect && npm run compile",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "snyk-protect": "snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -43,5 +44,6 @@
     "@storybook/addon-actions": "^3.3.15",
     "@storybook/addon-links": "^3.3.15",
     "@storybook/react": "^5.1.11"
-  }
+  },
+  "snyk": true
 }
